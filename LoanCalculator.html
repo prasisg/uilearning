@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Loan Calculator</title>
+
+        <style>
+            body{
+              background-color: lightblue;  
+            }
+        </style>
+    </head>
+    <body>
+        <!--This is an HTML form that allows the user to enter data and allows Javascript 
+            to display the results it Computes back to the user-->
+<form name="loandata">
+    <table>
+        <tr>
+            <td colspan="3"><b>Enter the Loan Information:</b></td>
+        </tr>
+        <tr>
+            <td>1)</td>
+<td>Amount of the loan(any Currency):</td>
+<td><input type="text" name="principal" size="12" onchange="calculate();"></input>
+</td>
+</tr>
+
+<tr>
+<td>2)</td>
+<td>Annual percentage rate of Interest:</td>
+<td><input type="text" name="interest" size="12" onchange="calculate();"></input>
+</td>
+</tr>
+
+<tr>
+    <td>3)</td>
+    <td>Repayment period in Years:</td>
+    <td><input type="text" name="years" size="12" onchange="calculate();"></input>
+    </td>
+    </tr>
+<tr>
+    <td colspan="3">
+        <input type="button" name="first" value="Compute" onclick="calculate();"></input> 
+      <input type="button" name ="second" value="Reset"  onclick="clearValues();"></input>
+    </td>
+    
+</tr>
+
+<tr><td colspan="3">
+    <b>Payment Information:</b>
+</td></tr>
+
+<tr>
+<td>4)</td>
+<td>Your monthly payment will be:</td>
+<td><input type="text" name="payment" size="12"></td>
+</tr>
+<tr>
+    <td>5)</td>
+    <td>Your total payment will be:</td>
+    <td><input type="text"  name="total" size="12"></td>
+
+</tr>
+<tr>
+    <td>6)</td>
+    <td>Your total interest payment will be:</td>
+    <td><input type="text" name="totalinterest" size="12">
+    </td>
+</tr>
+    
+    </table>
+</form>
+
+<!--This is the Javascript program-->
+
+<script language="JavaScript">
+function calculate(){
+
+    var principal=document.loandata.principal.value; 
+    var interest=document.loandata.interest.value / 100 / 12;
+    var payments=document.loandata.years.value *12;
+    
+    //Now compute the monthly payment math,
+
+    var x=Math.pow(1+interest,payments);
+    var monthly=(principal*x*interest)/(x-1);
+
+    //Check that the reults is finite number,If so display the results
+
+    if(!isNaN(monthly) &&
+    (monthly != Number.POSITIVE_INFINITY)&&
+    (monthly != Number.NEGATIVE_INFINITY)&&
+    principal > 0 &&
+    payments > 0 )  {
+
+
+document.loandata.payment.value = round(monthly);
+document.loandata.total.value = round(monthly*payments);
+document.loandata.totalinterest.value = round((monthly *payments)-principal);
+    }
+
+else{
+   document.loandata.payment.value="";
+    document.loandata.total.value="";
+    document.loandata.totalinterest.value="";
+}
+}
+//This simple method rounds a number to two decimal places.
+function round(x){
+
+    return Math.round(x*100)/100;
+}
+function clearValues(){
+    document.loandata.principal.value="";
+    document.loandata.interest.value="";
+    document.loandata.years.value ="";
+    
+    document.loandata.payment.value="";
+    document.loandata.total.value="";
+    document.loandata.totalinterest.value="";
+}
+
+</script>
+</body>
+</html>
