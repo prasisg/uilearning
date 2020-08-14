@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-appPU": {
+    "TourHeroes1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-appPU",
+            "outputPath": "dist/TourHeroes1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-appPU:build"
+            "browserTarget": "TourHeroes1:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-appPU:build:production"
+              "browserTarget": "TourHeroes1:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-appPU:build"
+            "browserTarget": "TourHeroes1:build"
           }
         },
         "test": {
@@ -110,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "my-appPU:serve"
+            "devServerTarget": "TourHeroes1:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-appPU:serve:production"
+              "devServerTarget": "TourHeroes1:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "my-appPU",
+  "defaultProject": "TourHeroes1",
   "cli": {
-    "analytics": false
+    "analytics": "84db8929-7cb4-49a1-80dc-545cada16c7e"
   }
 }
